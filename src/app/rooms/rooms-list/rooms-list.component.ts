@@ -4,7 +4,7 @@ import {
   DoCheck,
   EventEmitter,
   Input,
-  OnChanges,
+  OnChanges, OnDestroy,
   Output,
   SimpleChanges
 } from '@angular/core';
@@ -19,11 +19,10 @@ import {RoomList} from '../rooms';
   styleUrl: './rooms-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RoomsListComponent implements OnChanges {
+export class RoomsListComponent implements OnChanges, OnDestroy {
   @Input() rooms: RoomList[] = [];
   @Input() title: string = '';
   @Output() roomsSelected = new EventEmitter<RoomList>();
-
   ngOnChanges(changes: SimpleChanges): void {
     // if(changes['title']) {
     //   this.title = changes['title'].currentValue.toUpperCase();
@@ -33,6 +32,10 @@ export class RoomsListComponent implements OnChanges {
 
   selectedRoom(room: RoomList) {
     this.roomsSelected.emit(room);
+  }
+
+  ngOnDestroy(): void {
+    console.log('on destroy is called')
   }
 
 }

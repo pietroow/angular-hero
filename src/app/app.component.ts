@@ -2,27 +2,21 @@ import {AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewContainerRe
 import {RouterOutlet} from '@angular/router';
 import {RoomsComponent} from './rooms/rooms.component';
 import {CommonModule} from '@angular/common';
+import {ContainerComponent} from './container/container.component';
+import {EmployeeComponent} from './employee/employee.component';
 
-//   template: `
-// <!--    <h1> Hello World </h1>-->
-// <!--    <div [ngSwitch]="role">-->
-// <!--      <div *ngSwitchCase="'User'">Welcome User</div>-->
-// <!--      <div *ngSwitchCase="'Admin'">Welcome Admin</div>-->
-// <!--    </div>-->
-//
-//     <app-rooms></app-rooms>
-//   `,
+//   template: ``,
 //   styles: ` h1 {color:red}`
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RoomsComponent, CommonModule],
+  imports: [RouterOutlet, RoomsComponent, CommonModule, ContainerComponent, EmployeeComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
   title = 'hotelinventoryapp';
-  role = 'Admin';
+
   // @ViewChild('user', {read: ViewContainerRef}) vcr!: ViewContainerRef;
   @ViewChild('name', { static: true}) name!: ElementRef;
 
