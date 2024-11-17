@@ -1,48 +1,34 @@
 import { Injectable } from '@angular/core';
 import {RoomList} from '../rooms/rooms';
+import {HttpClient, HttpRequest} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoomsService {
-  roomList: RoomList[] = [
-    {
-      roomType: 'Deluxe Room',
-      roomNumber: 1,
-      amenities: 'Free Wifi',
-      price: 200,
-      photos: '',
-      checkInTime: new Date(),
-      checkoutTime: new Date(),
-      rating: 4.5
-    },
-    {
-      roomType: 'Deluxe Room',
-      roomNumber: 2,
-      amenities: 'Air conditioner, Free Wifi',
-      price: 200,
-      photos: '',
-      checkInTime: new Date(),
-      checkoutTime: new Date(),
-      rating: 444.8
-    },
-    {
-      roomType: 'Deluxe Room',
-      roomNumber: 3,
-      amenities: 'Air conditioner',
-      price: 500,
-      photos: '',
-      checkInTime: new Date(),
-      checkoutTime: new Date(),
-      rating: 8.2
-    }
-  ];
 
-  constructor() {
-    console.log('Room service initialized')
+  constructor(private http: HttpClient) {
   }
 
-  getRooms() {
-    return this.roomList;
+  getRooms(): Observable<RoomList[]> {
+    return this.http.get<RoomList[]>('/api/rooms');
+  }
+
+  addRoom(room: RoomList) {
+    return this.http.post<RoomList[]>('/api/rooms', room);
+  }
+
+  editRoom(room: RoomList, id: string) {
+    return this.http.put<RoomList[]>(`/api/rooms/${id}`, room);
+  }
+
+  removeRoom(id: string) {
+    return this.http.delete<RoomList[]>(`/api/rooms/${id}`);
+  }
+
+  getPhotos() {
+    const req = new HttpRequest('GET', 'https://jsonplaceholder.typicode.com/photos', { reportProgress: true});
+    return this.http.request(req);
   }
 }

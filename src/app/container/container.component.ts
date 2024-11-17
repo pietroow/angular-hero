@@ -13,7 +13,7 @@ export class ContainerComponent implements AfterContentInit {
   @ContentChild(EmployeeComponent) employee!: EmployeeComponent;
 
   ngAfterContentInit(): void {
-    console.log('container component => afterContentInit => ', this.employee);
+    // console.log('container component => afterContentInit => ', this.employee);
     // this.employee.employeeName = 'Rick and Morty'
   }
 

@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {RoomsComponent} from './rooms/rooms.component';
 import {CommonModule} from '@angular/common';

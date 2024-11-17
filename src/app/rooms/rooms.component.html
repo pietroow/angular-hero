@@ -8,14 +8,14 @@
        [innerText]="numberOfRooms"></div>
 </div>
 
-{{ rooms?.availableRooms ?? 'No rooms'}}
+{{ rooms?.availableRooms ?? 'No rooms' }}
 
 <div *ngIf="selectedRoom">
   {{ selectedRoom | json }}
 </div>
 
 <div>
-  <button (click)="addRoom()"> Add new room </button>
+  <button (click)="addRoom()"> Add new room</button>
 </div>
 
 <div *ngIf="!hideRooms">
@@ -24,3 +24,7 @@
 
 
 <button (click)="toggle()">Switch toggle</button>
+<button (click)="editRoom()">Edit Room</button>
+<button (click)="deleteRoom()">Delete Room</button>
+
+<h1> {{ totalBytes }} loaded </h1>
