@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {Room, RoomList} from './rooms';
 import {RoomsListComponent} from './rooms-list/rooms-list.component';
 import {HeaderComponent} from '../header/header.component';
+import {RoomsService} from '../service/rooms.service';
 
 @Component({
   selector: 'app-rooms',
@@ -27,43 +28,13 @@ export class RoomsComponent implements OnInit, AfterViewInit {
     bookedRooms: 5,
   }
 
-  constructor() {
+  constructor(private roomService: RoomsService) {
+
   }
 
   ngOnInit(): void {
     // console.log(this.headerChildrenComponent);
-    this.roomList = [
-      {
-        roomType: 'Deluxe Room',
-        roomNumber: 1,
-        amenities: 'Free Wifi',
-        price: 200,
-        photos: '',
-        checkInTime: new Date(),
-        checkoutTime: new Date(),
-        rating: 4.5
-      },
-      {
-        roomType: 'Deluxe Room',
-        roomNumber: 2,
-        amenities: 'Air conditioner, Free Wifi',
-        price: 200,
-        photos: '',
-        checkInTime: new Date(),
-        checkoutTime: new Date(),
-        rating: 444.8
-      },
-      {
-        roomType: 'Deluxe Room',
-        roomNumber: 3,
-        amenities: 'Air conditioner',
-        price: 500,
-        photos: '',
-        checkInTime: new Date(),
-        checkoutTime: new Date(),
-        rating: 8.2
-      }
-    ];
+    this.roomList = this.roomService.getRooms();
   }
 
   ngAfterViewInit(): void {
